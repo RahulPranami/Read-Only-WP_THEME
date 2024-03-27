@@ -12,9 +12,6 @@ get_header();
 ?>
 
 <section class="error-404 not-found">
-	<div class="image main" data-position="center">
-		<img src="<?php echo esc_url(get_header_image()); ?>" alt="<?php echo esc_attr(get_bloginfo('title')); ?>" />
-	</div>
 	<div class="container">
 
 		<header class="major">

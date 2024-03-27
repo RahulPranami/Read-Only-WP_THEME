@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying search results pages
  *
@@ -10,44 +11,46 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
-
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
+<section>
+	<div class="image main" data-position="center">
+		<?php if (is_home() && !is_front_page()) : ?>
+			<img src="<?php echo has_post_thumbnail() ? wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full')[0] : get_template_directory_uri() . '/assets/images/banner.jpg'; ?>" alt="" />
+		<?php else : ?>
+			<img src="<?php echo esc_url(get_header_image()); ?>" alt="<?php echo esc_attr(get_bloginfo('title')); ?>" />
+		<?php endif; ?>
+	</div>
+	<div class="container">
+		<?php if (have_posts()) : ?>
+			<header class="major">
+				<h2>
 					<?php
 					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'readonly' ), '<span>' . get_search_query() . '</span>' );
+					printf(esc_html__('Search Results for: %s', 'readonly'), '<span>' . get_search_query() . '</span>');
 					?>
-				</h1>
-			</header><!-- .page-header -->
+				</h2>
+				<!-- <p>Just an incredibly simple responsive site<br />
+		template freebie by <a href="http://html5up.net">HTML5 UP</a>.</p> -->
+			</header>
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+			<div class="features">
+				<?php
+				while (have_posts()) :
+					the_post();
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
+					get_template_part('template-parts/content', get_post_type());
+				endwhile; ?>
+			</div>
 
-			endwhile;
-
-			the_posts_navigation();
+			<?php the_posts_navigation(); ?>
+		<?php
 
 		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+			get_template_part('template-parts/content', 'none');
 
-		endif;
-		?>
-
-	</main><!-- #main -->
+		endif; ?>
+	</div>
+</section>
 
 <?php
-get_sidebar();
 get_footer();

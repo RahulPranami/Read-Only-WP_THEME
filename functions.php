@@ -188,3 +188,5 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 require get_template_directory() . '/inc/class-social-media-nav-walker.php';
+
+require get_template_directory() . '/inc/custom-login.php';

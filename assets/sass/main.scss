@@ -5,7 +5,7 @@
 @import "libs/breakpoints";
 @import "libs/html-grid";
 @import url("fontawesome-all.min.css");
-@import url("gfonts.css");//
+@import url("gfonts.css"); //
 /*
 	Read Only by HTML5 UP
 	html5up.net | @ajlkn
@@ -516,6 +516,7 @@ input::-moz-focus-inner {
 
 input[type="text"],
 input[type="password"],
+input[type="search"],
 input[type="email"],
 select,
 textarea {
@@ -568,6 +569,7 @@ select {
 
 input[type="text"],
 input[type="password"],
+input[type="search"],
 input[type="email"],
 select {
   height: _size(element-height);
@@ -1417,7 +1419,8 @@ input[type="button"],
     border-top: solid (_size(border-width) * 3) _palette(border);
 
     > .container {
-      padding: 6em 0 4em 0;
+      padding: 2em 0 2em 0;
+      // padding: 6em 0 4em 0;
     }
 
     &:first-child {
@@ -1433,12 +1436,13 @@ input[type="button"],
   border-top: 0;
   color: #c0c0c0;
   overflow: hidden;
-  padding: 4em 0 2em 0;
+  padding: 2em 0 2em 0;
 
   .copyright {
     line-height: 1em;
     list-style: none;
     padding: 0;
+    margin: 0;
 
     li {
       border-left: solid 1px #d4d4d4;
@@ -1962,5 +1966,17 @@ input[type="button"],
   input[type="button"],
   .button {
     padding: 0;
+  }
+}
+
+/* Custom */
+
+.post-navigation .nav-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+
+  a {
+    border-bottom: none;
   }
 }
