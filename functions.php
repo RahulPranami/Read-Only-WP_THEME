@@ -72,16 +72,16 @@ function readonly_setup() {
 	);
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'readonly_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
-		)
-	);
+	// add_theme_support(
+	// 	'custom-background',
+	// 	apply_filters(
+	// 		'readonly_custom_background_args',
+	// 		array(
+	// 			'default-color' => 'ffffff',
+	// 			'default-image' => '',
+	// 		)
+	// 	)
+	// );
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
@@ -148,7 +148,7 @@ function readonly_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	wp_enqueue_style( 'main', get_template_directory_uri() . '/main.css', array(), _S_VERSION );
+	wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.css', array(), _S_VERSION );
 
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'jquery-scrollex', get_template_directory_uri() . '/assets/js/jquery.scrollex.min.js', array(), _S_VERSION, true );
@@ -186,3 +186,5 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+require get_template_directory() . '/inc/class-social-media-nav-walker.php';
