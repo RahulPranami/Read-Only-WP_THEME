@@ -1618,6 +1618,7 @@ input::-moz-focus-inner {
 
 input[type="text"],
 input[type="password"],
+input[type="search"],
 input[type="email"],
 select,
 textarea {
@@ -1638,6 +1639,7 @@ textarea {
 
 input[type="text"]:invalid,
 input[type="password"]:invalid,
+input[type="search"]:invalid,
 input[type="email"]:invalid,
 select:invalid,
 textarea:invalid {
@@ -1646,6 +1648,7 @@ textarea:invalid {
 
 input[type="text"]:focus,
 input[type="password"]:focus,
+input[type="search"]:focus,
 input[type="email"]:focus,
 select:focus,
 textarea:focus {
@@ -1677,6 +1680,7 @@ select::-ms-expand {
 
 input[type="text"],
 input[type="password"],
+input[type="search"],
 input[type="email"],
 select {
 	height: 2.75em;

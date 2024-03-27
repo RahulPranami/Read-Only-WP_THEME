@@ -37,15 +37,9 @@ get_header();
 
 			<div class="features">
 				<?php
-				/* Start the Loop */
 				while (have_posts()) :
 					the_post();
 
-					/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
 					get_template_part('template-parts/content', get_post_type());
 
 				endwhile; ?>
@@ -56,22 +50,6 @@ get_header();
 
 	</div>
 </section>
-
-<!--
-		<section id="one">
-				<div class="image main" data-position="center">
-					<img src="<?php echo has_post_thumbnail() ? wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full')[0] : get_template_directory_uri() . '/assets/images/banner.jpg'; ?>" alt="" />
-				</div>
-				<div class="container">
-					<header class="major">
-						<h2>Read Only</h2>
-						<p>Just an incredibly simple responsive site<br />
-							template freebie by <a href="http://html5up.net">HTML5 UP</a>.</p>
-					</header>
-					<p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante lorem ipsum sed accumsan erat praesent faucibus commodo ac mi lacus. Adipiscing mi ac commodo. Vis aliquet tortor ultricies non ante erat nunc integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum.</p>
-				</div>
-			</section> -->
-
 
 <?php
 get_footer();
