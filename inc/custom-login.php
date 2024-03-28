@@ -7,8 +7,6 @@ function ajax_login()
 {
     check_ajax_referer('ajax-login-nonce', 'security');
 
-    error_log("12 : " . print_r($_POST, true));
-
     $info = array();
     $info['user_login'] = $_POST['log'];
     $info['user_password'] = $_POST['pwd'];
@@ -17,16 +15,19 @@ function ajax_login()
     $user_signon = wp_signon($info, false);
 
     if (is_wp_error($user_signon)) {
-        add_action('login_errors', function () {
-            echo json_encode(array('loggedin' => false, 'message' => __('Wrong username or password.')));
-        });
+        wp_safe_redirect(wp_get_referer());
     } else {
-        add_action('login_errors', function () {
-            echo json_encode(array('loggedin' => true, 'message' => __('Login successful, redirecting...')));
-        });
-    }
 
-    wp_safe_redirect(wp_get_referer());
+        wp_set_current_user($user_signon->ID, $user_signon->user_login);
+        wp_set_auth_cookie($user_signon->ID);
+
+        if ($user_signon->caps['administrator']) {
+            wp_safe_redirect(admin_url());
+        } else {
+            echo json_encode(array('loggedin' => true, 'message' => __('Login successful, redirecting...')));
+            wp_safe_redirect(wp_get_referer());
+        }
+    }
 
     die();
 }

@@ -28,17 +28,19 @@ get_header();
 			<h2><?php the_title(); ?></h2>
 		</header>
 
+		<?php do_action('login_errors') ?>
+
 		<form name="loginform" id="loginform" action="<?php echo admin_url('admin-ajax.php') ?>" method="post">
 
 			<div class="row gtr-uniform">
 				<div class="col-12">
 					<input type="text" name="log" id="user_login" aria-describedby="login-message" class="input" value="" size="20" autocapitalize="none" autocomplete="username" required="required" placeholder="Username or Email Address">
 				</div>
-				<div class="col-12">
+				<div class="col-12 wp-pwd">
 					<input type="password" name="pwd" id="user_pass" aria-describedby="login-message" class="input password-input" value="" size="20" autocomplete="current-password" spellcheck="false" required="required" placeholder="Password">
-					<!-- <button type="button" class="button button-secondary wp-hide-pw hide-if-no-js" data-toggle="0" aria-label="Show password"> -->
-					<span class="dashicons dashicons-visibility" aria-hidden="true"></span>
-					<!-- </button> -->
+					<!-- <button type="button" class="button button-secondary wp-hide-pw hide-if-no-js" data-toggle="0" aria-label="Show password">
+						<span class="dashicons dashicons-visibility" aria-hidden="true"></span>
+					</button> -->
 				</div>
 
 				<div class="col-12">
@@ -48,11 +50,7 @@ get_header();
 
 				<input type="hidden" name="action" value="login">
 
-				<?php
-				// add a wordpress nounce
-				wp_nonce_field('ajax-login-nonce', 'security');
-
-				?>
+				<?php wp_nonce_field('ajax-login-nonce', 'security'); ?>
 
 				<div class="col-12">
 					<ul class="actions">

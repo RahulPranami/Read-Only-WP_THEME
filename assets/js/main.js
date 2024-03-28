@@ -79,6 +79,8 @@
 
 				})
 				.each(function() {
+					if ($(this).attr('href').charAt(0) != '#')
+						return;
 
 					var	$this = $(this),
 						id = $this.attr('href'),

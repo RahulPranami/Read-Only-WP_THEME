@@ -517,6 +517,7 @@ input::-moz-focus-inner {
 input[type="text"],
 input[type="password"],
 input[type="search"],
+input[type="url"],
 input[type="email"],
 select,
 textarea {
@@ -570,6 +571,7 @@ select {
 input[type="text"],
 input[type="password"],
 input[type="search"],
+input[type="url"],
 input[type="email"],
 select {
   height: _size(element-height);
@@ -1378,6 +1380,13 @@ input[type="button"],
         display: block;
         padding: 0;
 
+        &.current-menu-item {
+          a {
+            background: _palette(bg);
+            color: _palette(header, bg) !important;
+          }
+        }
+
         a {
           @include vendor("transition", "none");
           border: 0;
@@ -1978,5 +1987,65 @@ input[type="button"],
 
   a {
     border-bottom: none;
+  }
+}
+
+#comments {
+  margin-top: 2rem;
+
+  h2 {
+    margin-bottom: 1rem;
+    color: _palette(accent1, bg);
+  }
+
+  .comment-list {
+    .comment {
+      margin-top: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid _palette(border2);
+
+      .comment-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .comment-author {
+          display: flex;
+          align-items: center;
+
+          b {
+            padding: 0 0.5em;
+          }
+        }
+      }
+
+      .comment-content {
+        p {
+          margin: 1em 1.5em 1em;
+        }
+      }
+
+      .comment-reply {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  .comment-respond {
+    margin-top: 2rem;
+
+    h3 {
+      margin-bottom: 1rem;
+      color: _palette(accent1, bg);
+    }
+
+    form {
+      label {
+        font-size: 1.2em;
+      }
+      textarea {
+        height: 8em;
+      }
+    }
   }
 }
